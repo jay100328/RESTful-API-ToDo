@@ -15,17 +15,17 @@ def get_todo(request):
     response['data'] = serializers.data
     return Response(response)
 
-# @api_view(['POST'])
-# def post_todo(request):
-#     response = {'status' : 200}
-#     data = request.data 
-#     serializers = TaskSerializer(data = data)
-#     if serializers.is_valid():
-#         serializers.save()
-#         return Response(serializers.data, status=status.HTTP_201_CREATED)
+@api_view(['POST'])
+def post_todo(request):
+    response = {'status' : 200}
+    data = request.data 
+    serializers = TaskSerializer(data = data)
+    if serializers.is_valid():
+        serializers.save()
+        return Response(serializers.data, status=status.HTTP_201_CREATED)
 
 
-#     return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class TaskListCreate(generics.ListCreateAPIView):
